@@ -8,12 +8,12 @@ TEMPLATE_FILE=man.yaml
 EC2_INSTANCE_TYPE=t2.micro
 
 # Deploy the cloudformation template 
-echo -e "\n\n================= Deploying main.yml ===================="
+echo -e "\n\n================= Deploying man.yml ===================="
 aws cloudformation deploy \
  	--region $REGION \
   	--profile $CLI_PROFILE \
   	--stack-name $STACK_NAME \
-  	--template-file $TEMPLATE_FILE \ 
+  	--template-file $TEMPLATE_FILE \
   	--no-fail-on-empty-changeset \
   	--capabilities CAPABILITY_NAMED_IAM \
   	--parameter-overrides \
@@ -26,5 +26,5 @@ echo -e "====================="
 if [ $? -eq 0 ]; then
 	aws cloudformation list-exports \
 		--profile awsbootstrap \
-		-- query "Exports[?Name=='InstanceDNS'].Value"
+		--query "Exports[?Name=='InstanceDNS'].Value"
 fi

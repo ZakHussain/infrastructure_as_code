@@ -127,4 +127,4 @@ Outputs:
     Description: The DNS name for the created instance
     Value: !Sub 'http://${Instance.PublicDnsName}:8080'
     Export:
-      Name: InstanceEndpoint
+      Name: InstanceDNS
